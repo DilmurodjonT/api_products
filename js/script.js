@@ -7,7 +7,7 @@ function renderData() {
     .then((response) => response.json())
     .then((data) => {
       $container.innerHTML = "";
-      data.forEach((product) => {
+      data.reverse().forEach((product) => {
         const productCard = document.createElement("div");
         productCard.className = "product-card";
         productCard.innerHTML = `

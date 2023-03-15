@@ -25,6 +25,7 @@
 .product-card__image-wrapper {
   width: 100%;
   min-height: 170px;
+  max-height: 170px;
   margin-bottom: 20px;
   background-color: #cfcece;
 }
