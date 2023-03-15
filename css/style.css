@@ -84,6 +84,7 @@
   color: #fff;
   border: none;
   border-radius: 5px;
+  cursor: pointer;
 }
 
 .product-card .edit-btn {
@@ -93,6 +94,7 @@
   color: #fff;
   border: none;
   border-radius: 5px;
+  cursor: pointer;
 }
 
 .product-card > button:active {
@@ -119,6 +121,7 @@
   top: 0;
   display: flex;
   align-items: center;
+  z-index: 10;
 }
 
 .nav ul {
@@ -131,6 +134,11 @@
 .nav a {
   text-decoration: none;
   color: #fff;
+}
+
+.nav a [active="true"] {
+  text-decoration: underline;
+  text-underline-offset: 8px;
 }
 
 .create-wrapper {
