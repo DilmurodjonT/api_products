@@ -47,14 +47,34 @@
   word-break: break-Word;
 }
 
-.product-card p {
+.desc {
   font-size: 12px;
   color: gray;
   word-break: break-word;
+  position: relative;
+  cursor: pointer;
 }
 
 .update-main {
   display: none;
+}
+
+.desc p {
+  display: none;
+}
+
+.desc:hover p {
+  display: block;
+  background-color: rgba(0, 0, 0, 0.507);
+  backdrop-filter: blur(20px);
+  font-size: 12px;
+  padding: 5px;
+  border-radius: 5px;
+  color: #fff;
+  position: absolute;
+  top: calc(100% + 5px);
+  max-width: 100%;
+  min-width: 100%;
 }
 
 .product-card .delete-btn {

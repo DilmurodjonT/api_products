@@ -32,7 +32,9 @@ function renderData() {
                   }" alt="${product.description}"></div>
                   <h2>${truncateWords(product.title)}</h2>
                   <strong>$${product.price}</strong>
-                  <p>${truncateWords(product.description)}</p>
+                  <div class="desc">${truncateWords(product.description)} <p>${
+          product.description
+        }</p></div>
                   <button data-product-id="${
                     product.id
                   }" class="delete-btn">Delete product</button>
