@@ -1,5 +1,6 @@
 const $container = document.querySelector(".container");
 const $loader = document.querySelector(".loader");
+const $updateMain = document.querySelector("#update-main");
 const $updateForm = document.querySelector("#update");
 const $productTitleInp = document.querySelector("#title");
 const $productPriceInp = document.querySelector("#price");
@@ -58,23 +59,33 @@ $container.addEventListener("click", (e) => {
           renderData(); // bu esa hamma saytni ref resh qilmay o'shani o'zini qiladi
         }
       });
+  } else if (e.target.className == "edit-btn") {
+    // console.log("edit bosildi");
+    // console.log(e.target.dataset.productId);
+    $updateMain.style.display = "block";
+    $updateForm.setAttribute("edit-id", e.target.dataset.productId);
   }
 });
 
-$createForm.addEventListener("submit", (e) => {
+$updateForm.addEventListener("submit", (e) => {
   e.preventDefault();
 
-  fetch("https://api.escuelajs.co/api/v1/products/", {
-    method: "PUT",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({
-      title: $productTitleInp.value,
-      price: $productPriceInp.value,
-      description: $productDescInp.value,
-      categoryId: $productCategoryInp.value,
-      images: [$productImageInp.value],
-    }),
-  })
+  fetch(
+    `https://api.escuelajs.co/api/v1/products/${e.target.getAttribute(
+      "edit-id"
+    )}`,
+    {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        title: $productTitleInp.value,
+        price: $productPriceInp.value,
+        description: $productDescInp.value,
+        categoryId: $productCategoryInp.value,
+        images: [$productImageInp.value],
+      }),
+    }
+  )
     .then((response) => response.json())
     .then((data) => console.log(data));
 });
