@@ -53,10 +53,23 @@
   word-break: break-word;
 }
 
-.product-card button {
+.update-main {
+  display: none;
+}
+
+.product-card .delete-btn {
   margin-top: 10px;
   padding: 8px 0;
   background-color: red;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+}
+
+.product-card .edit-btn {
+  margin-top: 10px;
+  padding: 8px 0;
+  background-color: gold;
   color: #fff;
   border: none;
   border-radius: 5px;
@@ -102,7 +115,7 @@
 
 .create-wrapper {
   max-width: 1000px;
-  margin: 20px 0;
+  margin: 20px auto;
 }
 
 .create-wrapper form {

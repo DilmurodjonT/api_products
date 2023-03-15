@@ -1,5 +1,11 @@
 const $container = document.querySelector(".container");
 const $loader = document.querySelector(".loader");
+const $updateForm = document.querySelector("#update");
+const $productTitleInp = document.querySelector("#title");
+const $productPriceInp = document.querySelector("#price");
+const $productDescInp = document.querySelector("#description");
+const $productCategoryInp = document.querySelector("#category");
+const $productImageInp = document.querySelector("#image");
 
 function renderData() {
   checkLoader(true);
@@ -16,6 +22,7 @@ function renderData() {
                   <strong>$${product.price}</strong>
                   <p>${product.description}</p>
                   <button data-product-id="${product.id}" class="delete-btn">Delete product</button>
+                  <button data-product-id="${product.id}" class="edit-btn">Edit product</button>
                   `;
         $container.appendChild(productCard);
         checkLoader(false);
@@ -52,4 +59,22 @@ $container.addEventListener("click", (e) => {
         }
       });
   }
+});
+
+$createForm.addEventListener("submit", (e) => {
+  e.preventDefault();
+
+  fetch("https://api.escuelajs.co/api/v1/products/", {
+    method: "PUT",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      title: $productTitleInp.value,
+      price: $productPriceInp.value,
+      description: $productDescInp.value,
+      categoryId: $productCategoryInp.value,
+      images: [$productImageInp.value],
+    }),
+  })
+    .then((response) => response.json())
+    .then((data) => console.log(data));
 });
