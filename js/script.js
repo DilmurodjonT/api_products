@@ -8,6 +8,15 @@ const $productDescInp = document.querySelector("#description");
 const $productCategoryInp = document.querySelector("#category");
 const $productImageInp = document.querySelector("#image");
 
+//-------- 30tadan ko'p harfni kesadi...
+function truncateWords(str) {
+  if (str.split("").length > 30) {
+    return str.split("").slice(0, 30).join("") + "...";
+  }
+  return str;
+}
+
+//----------- Asosiy funtion
 function renderData() {
   checkLoader(true);
   fetch("https://api.escuelajs.co/api/v1/products")
@@ -18,12 +27,18 @@ function renderData() {
         const productCard = document.createElement("div");
         productCard.className = "product-card";
         productCard.innerHTML = `
-                  <div class="product-card__image-wrapper"><img src="${product.images[0]}" alt="${product.description}"></div>
-                  <h2>${product.title}</h2>
+                  <div class="product-card__image-wrapper"><img src="${
+                    product.images[0]
+                  }" alt="${product.description}"></div>
+                  <h2>${truncateWords(product.title)}</h2>
                   <strong>$${product.price}</strong>
-                  <p>${product.description}</p>
-                  <button data-product-id="${product.id}" class="delete-btn">Delete product</button>
-                  <button data-product-id="${product.id}" class="edit-btn">Edit product</button>
+                  <p>${truncateWords(product.description)}</p>
+                  <button data-product-id="${
+                    product.id
+                  }" class="delete-btn">Delete product</button>
+                  <button data-product-id="${
+                    product.id
+                  }" class="edit-btn">Edit product</button>
                   `;
         $container.appendChild(productCard);
         checkLoader(false);
@@ -34,6 +49,7 @@ function renderData() {
 
 renderData();
 
+//---------- aylanadigan mushuk chiqishi
 function checkLoader(isLoading) {
   if (isLoading) {
     $loader.style.display = "flex";
@@ -42,6 +58,7 @@ function checkLoader(isLoading) {
   }
 }
 
+//---------O'chirish function
 $container.addEventListener("click", (e) => {
   if (e.target.className == "delete-btn") {
     checkLoader(true);
@@ -67,6 +84,7 @@ $container.addEventListener("click", (e) => {
   }
 });
 
+//------------Tahrirlash function
 $updateForm.addEventListener("submit", (e) => {
   e.preventDefault();
 
