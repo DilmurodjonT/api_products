@@ -87,5 +87,12 @@ $updateForm.addEventListener("submit", (e) => {
     }
   )
     .then((response) => response.json())
-    .then((data) => console.log(data));
+    // .then((data) => console.log(data))
+    .then((data) => {
+      if (data.id) {
+        $updateMain.style.display = "none";
+        $updateForm.removeAttribute("edit-id");
+        renderData();
+      }
+    });
 });
