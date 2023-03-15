@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./css/style.css" />
+    <title>Create product</title>
+  </head>
+  <body>
+    <nav class="nav">
+      <ul>
+        <li><a href="./index.html">Shop products</a></li>
+        <li><a href="./create.html">Create product</a></li>
+      </ul>
+    </nav>
+
+    <main>
+      <div class="create-wrapper">
+        <form id="create">
+          <input id="title" type="text" placeholder="Product title" />
+          <input id="price" type="number" placeholder="Product price" />
+          <input
+            id="description"
+            type="text"
+            placeholder="Product description"
+          />
+          <input
+            id="category"
+            type="number"
+            placeholder="Product category ID"
+          />
+          <input id="image" type="url" placeholder="Product image" />
+          <button>Create product</button>
+        </form>
+      </div>
+    </main>
+    <script src="./js/script.js"></script>
+  </body>
+</html>
