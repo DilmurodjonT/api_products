@@ -10,12 +10,15 @@ $createForm.addEventListener("submit", (e) => {
 
   fetch("https://api.escuelajs.co/api/v1/products/", {
     method: "POST",
-    body: {
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
       title: $productTitleInp.value,
       price: $productPriceInp.value,
       description: $productDescInp.value,
       categoryId: $productCategoryInp.value,
       images: [$productImageInp.value],
-    },
-  });
+    }),
+  })
+    .then((response) => response.json())
+    .then((data) => console.log(data));
 });
