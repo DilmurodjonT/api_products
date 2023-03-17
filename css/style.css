@@ -136,7 +136,7 @@
   color: #fff;
 }
 
-.nav a [active="true"] {
+.nav a[active="true"] {
   text-decoration: underline;
   text-underline-offset: 8px;
 }
